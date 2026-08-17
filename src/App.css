@@ -276,12 +276,14 @@ body {
   background: var(--bg-gradient);
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
 }
 
 .app-container {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 2rem 1rem;
 }
 
@@ -781,44 +783,361 @@ body {
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE FOUNDATIONS
 ========================= */
 
-@media (max-width: 640px) {
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.app-main,
+.glass-header {
+  width: min(100%, 860px);
+}
+
+.search-box,
+.task-content {
+  min-width: 0;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.task-meta {
+  flex-wrap: wrap;
+}
+
+.glass-btn,
+.theme-toggle-btn,
+.priority-chip,
+.filter-pill,
+.checkbox-btn,
+.action-btn {
+  touch-action: manipulation;
+}
+
+/* =========================
+   RESPONSIVE — REAL WORLD
+========================= */
+
+/* Tablet / small laptop */
+@media (max-width: 900px) {
   .app-container {
-    padding: 1rem 0.75rem;
+    padding: 1.5rem 1rem;
   }
 
-  .glass-header,
-  .glass-card {
+  .ambient-blur-1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .ambient-blur-2 {
+    width: 280px;
+    height: 280px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filter-group {
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet / large mobile */
+@media (max-width: 768px) {
+  .app-container {
     padding: 1rem;
   }
 
   .glass-header {
+    padding: 0.9rem 1rem;
     gap: 1rem;
+  }
+
+  .glass-card {
+    padding: 1rem;
+  }
+
+  .form-controls,
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .priority-selector {
+    width: 100%;
+  }
+
+  .priority-chip {
+    flex: 1;
+    min-height: 42px;
+  }
+
+  .primary-btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .filter-pills {
+    width: 100%;
+  }
+
+  .task-item {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .task-content {
+    min-width: 0;
+  }
+
+  .task-actions {
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .ambient-blur {
+    filter: blur(100px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 0.875rem 0.75rem;
+  }
+
+  .glass-header {
+    margin-bottom: 1rem;
+    border-radius: 16px;
+  }
+
+  .brand-container {
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
   }
 
   .brand-subtitle {
     display: none;
   }
 
-  .form-controls,
-  .filter-group,
+  .theme-toggle-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    min-width: 0;
+  }
+
+  .stat-card-progress {
+    grid-column: 1 / -1;
+  }
+
+  .stat-value {
+    font-size: 1.55rem;
+  }
+
+  .priority-selector {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .priority-chip {
+    width: 100%;
+    padding-inline: 0.5rem;
+  }
+
+  .filter-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    padding-bottom: 0.2rem;
+  }
+
+  .filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-label,
+  .filter-pill {
+    flex: 0 0 auto;
+  }
+
+  .filter-pill {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .task-item {
+    flex-direction: column;
     align-items: stretch;
   }
 
-  .priority-selector,
-  .filter-pills {
-    flex-wrap: wrap;
+  .task-content {
+    width: 100%;
+    align-items: flex-start;
   }
 
-  .task-item {
-    gap: 1rem;
+  .checkbox-btn {
+    flex: 0 0 24px;
+    margin-top: 1px;
   }
 
   .task-actions {
-    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .action-btn {
+    flex: 1;
+    min-height: 42px;
+  }
+
+  .empty-state {
+    padding: 2.25rem 1rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.75rem 0.625rem;
+  }
+
+  .glass-header,
+  .glass-card {
+    padding: 0.875rem;
+  }
+
+  .glass-header {
+    gap: 0.75rem;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.1rem;
+  }
+
+  .theme-toggle-btn {
+    padding-inline: 0.65rem;
+  }
+
+  .glass-input {
+    font-size: 16px;
+    min-height: 46px;
+  }
+
+  .search-input {
+    padding-right: 2.5rem;
+  }
+
+  .form-controls,
+  .filter-toolbar,
+  .filter-group {
+    gap: 0.75rem;
+  }
+
+  .task-title {
+    font-size: 0.95rem;
+  }
+
+  .task-meta {
+    gap: 0.35rem;
+  }
+
+  .badge,
+  .task-status-tag {
+    font-size: 0.68rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card-progress {
+    grid-column: auto;
+  }
+
+  .priority-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .theme-toggle-btn {
+    padding-inline: 0.55rem;
+  }
+}
+
+/* Hover effects only for devices that actually support hover */
+@media (hover: hover) and (pointer: fine) {
+  .task-item:hover {
+    border-color: var(--card-hover-border);
+    transform: translateY(-2px);
+  }
+
+  .theme-toggle-btn:hover {
+    background: color-mix(in srgb, var(--accent-primary) 14%, transparent);
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+  }
+
+  .primary-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+    box-shadow: 0 12px 30px rgba(251, 111, 146, 0.22);
+  }
+
+  .filter-pill:hover {
+    border-color: var(--accent-border);
+    color: var(--text-main);
+  }
+
+  .delete-btn:hover {
+    background: color-mix(in srgb, var(--priority-high) 20%, transparent);
+    color: var(--priority-high);
+    border-color: var(--priority-high);
   }
 }
 
